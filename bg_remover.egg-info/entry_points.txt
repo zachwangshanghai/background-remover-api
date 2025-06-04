@@ -1,0 +1,2 @@
+[console_scripts]
+bg-remove = remove_bg:main

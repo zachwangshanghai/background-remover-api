@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: bg-remover
+Version: 0.1.0
+Summary: 一个简单的图片背景去除工具
+Author: AI Assistant
+Requires-Python: >=3.6
+Requires-Dist: rembg
+Requires-Dist: Pillow
