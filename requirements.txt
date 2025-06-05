@@ -1,7 +1,7 @@
-fastapi==0.95.0
-uvicorn==0.21.1
-python-multipart==0.0.6
-rembg==2.0.30
-Pillow==9.5.0
-python-dotenv==1.0.0
-starlette==0.26.1
+fastapi
+uvicorn
+python-multipart
+rembg
+Pillow
+python-dotenv
+starlette
