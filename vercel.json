@@ -5,8 +5,7 @@
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb",
-        "includeFiles": "models/**",
-        "installCommand": "pip install -r requirements.txt && python preload_models.py"
+        "includeFiles": "models/**"
       }
     }
   ],
