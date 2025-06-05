@@ -6,6 +6,20 @@ import tempfile
 import os
 import logging
 
+
+import os
+import sys
+
+# 解决 rembg 模型下载问题
+os.environ["U2NET_HOME"] = os.path.join(os.getcwd(), "models")
+
+# 确保模型目录存在
+if not os.path.exists(os.environ["U2NET_HOME"]):
+    os.makedirs(os.environ["U2NET_HOME"])
+
+# 添加当前目录到系统路径
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 app = Flask(__name__)
 app.logger.setLevel(logging.INFO)  # 设置日志级别
 
@@ -54,4 +68,6 @@ def remove_background_api():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Vercel 会自动设置 PORT 环境变量
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
