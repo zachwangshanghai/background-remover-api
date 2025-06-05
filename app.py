@@ -9,7 +9,7 @@ from rembg.session_factory import new_session
 import sys
 
 
-# 在 app.py 开头添加
+# 在 app.py 开头添加，注释
 import os
 os.environ["U2NET_HOME"] = os.path.join(os.path.dirname(__file__), "models")
 
