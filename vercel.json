@@ -1,18 +1,32 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb",
-        "includeFiles": "models/**"
-      }
+      "src": "api_server.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "app.py"
+      "dest": "api_server.py"
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": ".",
+    "MODEL_NAME": "u2netp"
+  },
+  "functions": {
+    "api_server.py": {
+      "maxDuration": 10
+    }
+  },
+  "build": {
+    "env": {
+      "PYTHONPATH": "."
+    }
+  },
+  "installCommand": "pip install -r requirements.txt",
+  "outputDirectory": ".",
+  "public": false
 }

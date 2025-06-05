@@ -5,3 +5,5 @@ rembg
 Pillow
 python-dotenv
 starlette
+onnxruntime
+numpy
