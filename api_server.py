@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from rembg import remove
+from background_remover import BackgroundRemover
 from PIL import Image
 import io
 import os
@@ -60,6 +60,9 @@ async def validate_image(file: UploadFile) -> None:
     
     await file.seek(0)
 
+# 初始化背景移除器
+background_remover = BackgroundRemover()
+
 @app.post("/api/remove-background")
 async def remove_background(file: UploadFile = File(...)):
     try:
@@ -69,7 +72,7 @@ async def remove_background(file: UploadFile = File(...)):
         # 读取和处理图片
         contents = await file.read()
         input_image = Image.open(io.BytesIO(contents))
-        output_image = remove(input_image)
+        output_image = background_remover.remove_background(input_image)
         
         # 转换为Base64
         img_byte_arr = io.BytesIO()
