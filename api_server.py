@@ -103,6 +103,10 @@ async def remove_background(file: UploadFile = File(...)):
             data=None
         ).dict()
 
+@app.get("/")
+async def root():
+    return {"message": "Background Remover API is running"}
+
 @app.get("/api/status")
 async def get_status():
     return APIResponse(
